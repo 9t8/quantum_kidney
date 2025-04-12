@@ -1,5 +1,10 @@
 import gzip
 import random
+import zipfile
+
+def unzip_data():
+    with zipfile.ZipFile('small.zip', 'r') as small:
+        small.extractall('build')
 
 def read_kep(filename):
     if filename.find(".gz") > 0:
@@ -36,7 +41,7 @@ def write_prob(filename):
     for i in adj:
         f.write("%s\n" % rnd())
         for j in adj[i]:
-            f.write("%s " % rnd())
+            f.write("%s " % rnd())  
         f.write("\n")
 
 def read_prob(filename):
@@ -56,23 +61,23 @@ def read_prob(filename):
 
     return adj, w, p
 
-if __name__ == "__main__":
-    import sys
-    import os 
-    try:
-        filename = sys.argv[1]
-        seed = int(sys.argv[2])
-    except:
-        filename = "DATA/10-instance-01.input.gz"
-        seed = 1
+# if __name__ == "__main__":
+#     import sys
+#     import os 
+#     try:
+#         filename = sys.argv[1]
+#         seed = int(sys.argv[2])
+#     except:
+#         filename = "DATA/10-instance-01.input.gz"
+#         seed = 1
 
-    random.seed(seed)
-    probfile = filename.replace(".input", ".prob")
-    if os.path.exists(probfile) or os.path.exists(probfile+".gz"):
-        adj, w, p = read_prob(filename)
-    else:
-        write_prob(filename)
-        adj, w, p = read_prob(filename)
+#     random.seed(seed)
+#     probfile = filename.replace(".input", ".prob")
+#     if os.path.exists(probfile) or os.path.exists(probfile+".gz"):
+#         adj, w, p = read_prob(filename)
+#     else:
+#         write_prob(filename)
+#         adj, w, p = read_prob(filename)
 
     # for i in adj:
     #     print i, "\t", adj[i]

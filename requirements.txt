@@ -1,4 +1,7 @@
 numpy
-pyomo
-classiq
+pennylane
 matplotlib
+openqaoa
+docplex
+cplex
+pulp
