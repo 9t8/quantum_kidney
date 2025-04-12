@@ -3,7 +3,7 @@ import kepio
 from docplex.mp.model import Model
 
 import classical_solve
-import quantum_knapsack
+import quantum_solve
 
 
 def invert(adj):
@@ -66,5 +66,5 @@ prob = classical_solve.docplex_to_pulp(mdl)
 
 classical_solve.analyze(prob)
 
-quantum_out = quantum_knapsack.quantum_solve(mdl)
+quantum_out = quantum_solve.quantum_solve(mdl)
 print(postselect(quantum_out, verif_info))
