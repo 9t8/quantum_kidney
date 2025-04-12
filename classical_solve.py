@@ -1,5 +1,16 @@
-import pulp
+import uuid
+from pathlib import Path
 
+import pulp
+from docplex.mp.model import Model
+
+
+def docplex_to_pulp(mdl: Model):
+    filename = f'{uuid.uuid4()}.mps'
+    mdl.export_as_mps(filename)
+    vars, prob = pulp.LpProblem.fromMPS(filename)
+    Path(filename).unlink()
+    return prob
 
 def analyze(p: pulp.LpProblem) -> None:
     p.solve()
@@ -22,7 +33,3 @@ def analyze(p: pulp.LpProblem) -> None:
             f'{c.name or "":16.16} {-c.constant - c.slack:12} {c.pi:12.6}'
             f' {-c.constant:12}',
         )
-
-
-vars, prob = pulp.LpProblem.fromMPS('build/model.mps')
-analyze(prob)
