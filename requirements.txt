@@ -1,7 +1,7 @@
 numpy
 pennylane
 matplotlib
-openqaoa
+openqaoa-qiskit
 docplex
 cplex
 pulp

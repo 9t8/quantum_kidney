@@ -100,7 +100,7 @@ def analyze(dataset, shots, min_vars=1, max_vars=20):
     for soln in solns:
         objective_counts[soln.count("1")] += solns[soln]
     
-    #Graphing
+    # Graphing
     fig, ax = plt.subplots()
     ax.stairs(objective_counts, fill=True)
     ax.vlines(
@@ -119,7 +119,7 @@ def analyze(dataset, shots, min_vars=1, max_vars=20):
 
     return mdl.number_of_variables
 
-#Solves all solvable datasets
+# Solves all solvable datasets
 vars_dist = {}
 for i in range(10, 40, 10):
     for j in range(1, 51):

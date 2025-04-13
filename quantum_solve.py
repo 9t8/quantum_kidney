@@ -31,7 +31,7 @@ def quantum_solve(mdl, shots):
                 qml.RX(-2 * betas[layer], wires=i)
         return qml.sample()
     
-    #Dictionary of solutions and frequency
+    # Dictionary of solutions and frequency
     def samples_dict(samples, n_items):
         results = defaultdict(int)
         for sample in samples:
@@ -42,19 +42,19 @@ def quantum_solve(mdl, shots):
     betas = np.linspace(np.pi/4, 0, p)  # Parameters for the mixer Hamiltonian
     gammas = np.linspace(0, math.pi/2, p)  # Parameters for the cost Hamiltonian
 
-    #Unbalancede Penalization Coefficients
+    # Unbalancede Penalization Coefficients
     lambda_1, lambda_2 = (
         0.85,
         0.85,
     )
-    #Generate Hamiltonian
+    # Generate Hamiltonian
     ising_hamiltonian = FromDocplex2IsingModel(
         mdl,
         unbalanced_const=True,
         strength_ineq=[lambda_1, lambda_2],
     ).ising_model
 
-    #Qubit terms
+    # Qubit terms
     h_new = {
         tuple(i): w
         for i, w in zip(ising_hamiltonian.terms, ising_hamiltonian.weights)
@@ -66,7 +66,7 @@ def quantum_solve(mdl, shots):
         if len(i) == 2
     }
 
-    #Execute Circuit
+    # Execute Circuit
     samples_unbalanced = samples_dict(
         qaoa_circuit(gammas, betas, h_new, J_new, num_qubits=n_items), n_items
     )
