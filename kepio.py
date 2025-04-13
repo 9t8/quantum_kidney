@@ -13,6 +13,7 @@ def read_kep(filename):
     else:
         f = open(filename)
     data = f.read().split()
+    nvert = int(data.pop(0))
     narcs = int(data.pop(0))
     adj = {}
     w = {}
