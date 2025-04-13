@@ -60,7 +60,7 @@ def postselect(samples, verif_info):
             good_samples[sample] = samples[sample]
     return good_samples
 
-mdl, verif_info = kep_to_model('build/small/10_03.input.gz')
+mdl, verif_info = kep_to_model('build/small/10_01.input.gz')
 
 prob = classical_solve.docplex_to_pulp(mdl)
 
