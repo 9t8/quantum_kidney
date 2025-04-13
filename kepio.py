@@ -3,8 +3,9 @@ import zipfile
 
 
 def unzip_data():
-    with zipfile.ZipFile('small.zip', 'r') as small:
-        small.extractall('build')
+    with zipfile.ZipFile("small.zip", "r") as small:
+        small.extractall("build")
+
 
 def read_kep(filename):
     if filename.find(".gz") > 0:
@@ -23,9 +24,10 @@ def read_kep(filename):
             adj[i].append(j)
         else:
             adj[i] = [j]
-        w[i,j] = float(data.pop(0))
-        assert i>=0 and j>=0
+        w[i, j] = float(data.pop(0))
+        assert i >= 0 and j >= 0
     return adj, w
+
 
 def read_prob(filename):
     adj, w = read_kep(filename)
@@ -40,6 +42,6 @@ def read_prob(filename):
     for i in adj:
         p[i] = float(data.pop(0))
         for j in adj[i]:
-            p[i,j] = float(data.pop(0))
+            p[i, j] = float(data.pop(0))
 
     return adj, w, p

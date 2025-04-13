@@ -1,1 +1,1 @@
-# Kidney Donation Chain Integer Programming with QAOA
+# QAOA for the kidney exchange problem
