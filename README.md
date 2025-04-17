@@ -1,5 +1,8 @@
 # QAOA for the kidney exchange problem
 
+Bitcamp 2025 Advanced Quantum Track winner
+https://devpost.com/software/kidney-donation-chain-integer-programming-with-qaoa
+
 [Slideshow](https://docs.google.com/presentation/d/1QfcvnHXAY4uffTjImgYDVJnK4g6A-NWtu9WTt6nQ9Tk/edit?usp=sharing)
 
 1. Run `kepio.unzip_data()`
@@ -7,7 +10,7 @@
 
 ## Inspiration
 
-We were looking into applications of linear programming and found kidney donation chain optimization in a textbook.
+We were looking into applications of linear programming and found kidney donation chain optimization in a textbook. There hasn't been any interest in using quantum computing for this problem, so we decided to look into it.
 
 ## What it does
 
@@ -19,11 +22,11 @@ We downloaded datasets from the internet, modernized the provided parser, wrote 
 
 ## Challenges we ran into
 
-Classiq requires manual verification of new accounts, so we had to switch tools. OpenQAOA's DOcplex to Ising model converter threw obscure errors. Performance constraints of quantum simulation on classical computers prevented us from using datasets with more than 30 donor-recipient pairs, even with unbalanced penalization to reduce variable count. Additionally, pruning optimizations made predicting model size from dataset size challenging.
+The SDK we plannede to use, classiq, requires manual verification of new accounts and was buggy, so we had to switch tools. OpenQAOA's DOcplex to Ising model converter threw obscure errors. Performance constraints of quantum simulation on classical computers prevented us from using datasets with more than 30 donor-recipient pairs, even with unbalanced penalization to reduce variable count. Additionally, pruning optimizations made predicting model size from dataset size challenging.
 
 ## Accomplishments that we're proud of
 
-We implemented a working quantum algorithm that may have exponential speedup.
+We implemented a working quantum algorithm that has an exponential speedup in many realistic cases.
 
 ## What we learned
 
@@ -31,4 +34,4 @@ We learned a lot about the applications, implementation, and analysis of quantum
 
 ## What's next
 
-We could add support for success probabilities and altruistic donors.
+We could add support for success probabilities and altruistic donors. We could run further simulations to properly optimize the hamiltonian parameters for QAOA.
